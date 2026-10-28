@@ -74,6 +74,7 @@ body {
     position: relative;
 }
 
+
 .header__logo::before {
     content: "";
 
@@ -98,6 +99,7 @@ body {
 
     pointer-events: none;
 }
+
 
 .header__logo img {
     width: 500px;
@@ -240,7 +242,18 @@ body {
 }
 
 
-/* BOTÓN */
+/* CONTENEDOR DE BOTONES */
+
+.hero__buttons {
+    display: flex;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+/* BOTONES */
 
 .btn {
     display: inline-block;
@@ -251,22 +264,27 @@ body {
 
     font-weight: 600;
 
+    border-radius: 2px;
+
     transition:
         background-color 0.3s ease,
         border-color 0.3s ease,
+        color 0.3s ease,
         transform 0.3s ease;
 }
 
 
+/* WHATSAPP / BOTÓN PRINCIPAL */
+
 .btn--primary {
     background-color: var(--red);
+
     color: var(--white);
 
     border: 2px solid var(--red);
 
-    border-radius: 2px;
-
-    box-shadow: 0 5px 20px rgba(215, 25, 32, 0.15);
+    box-shadow:
+        0 5px 20px rgba(215, 25, 32, 0.15);
 }
 
 
@@ -274,6 +292,28 @@ body {
     background-color: #b5141a;
 
     border-color: #b5141a;
+
+    transform: translateY(-2px);
+}
+
+
+/* EMAIL / BOTÓN SECUNDARIO */
+
+.btn--secondary {
+    background-color: transparent;
+
+    color: var(--white);
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+}
+
+
+.btn--secondary:hover {
+    background-color: var(--white);
+
+    color: var(--black);
+
+    border-color: var(--white);
 
     transform: translateY(-2px);
 }
@@ -345,28 +385,36 @@ body {
     object-fit: cover;
 }
 
+
 /* TABLET / CELULAR */
 
 @media (max-width: 900px) {
 
     .header {
         height: auto;
+
         padding-top: 25px;
     }
 
+
     .header__container {
         width: 90%;
+
         margin: 0 auto;
     }
 
+
     .header__logo img {
         width: 330px;
+
         max-width: 85vw;
     }
+
 
     .header__logo::before {
         width: 330px;
         height: 110px;
+
         left: 0;
 
         filter: blur(12px);
@@ -375,6 +423,7 @@ body {
 
     .hero {
         display: flex;
+
         flex-direction: column;
 
         min-height: 100vh;
@@ -409,6 +458,7 @@ body {
 
     .hero h1 {
         width: 100%;
+
         max-width: 100%;
 
         margin-bottom: 28px;
@@ -443,6 +493,11 @@ body {
 
     .hero__status {
         margin-bottom: 30px;
+    }
+
+
+    .hero__buttons {
+        width: auto;
     }
 
 
@@ -499,12 +554,13 @@ body {
 
     .header__logo img {
         width: 270px;
-        max-width: 85   vw;
+
+        max-width: 85vw;
     }
 
 
     .header__logo::before {
-        width: 290px;
+        width: 270px;
         height: 95px;
 
         left: 0;
@@ -526,28 +582,32 @@ body {
         font-size: 0.62rem;
 
         letter-spacing: 1.8px;
+
+        line-height: 1.5;
     }
 
 
     .hero h1 {
-    width: 100%;
+        width: 100%;
 
-    margin-bottom: 25px;
+        margin-bottom: 25px;
 
-    font-size: clamp(
-        2rem,
-        9.5vw,
-        2.8rem
-    );
+        font-size: clamp(
+            2rem,
+            9.5vw,
+            2.8rem
+        );
 
-    line-height: 1;
+        line-height: 1;
 
-    letter-spacing: -1.5px;
-}
+        letter-spacing: -1.5px;
+    }
+
 
     .hero h1 span {
-    font-size: 0.9em;
-}
+        font-size: 0.9em;
+    }
+
 
     .hero__description {
         margin-bottom: 24px;
@@ -571,12 +631,23 @@ body {
     }
 
 
+    .hero__buttons {
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+
     .btn {
         width: 100%;
 
         padding: 14px 20px;
 
         font-size: 0.95rem;
+
+        text-align: center;
     }
 
 
@@ -601,12 +672,18 @@ body {
 @media (max-width: 380px) {
 
     .header__logo img {
-        width: 260px;
+        width: 250px;
+    }
+
+
+    .header__logo::before {
+        width: 250px;
     }
 
 
     .hero__content {
         padding-left: 5%;
+
         padding-right: 5%;
     }
 
@@ -615,9 +692,11 @@ body {
         font-size: 1.9rem;
     }
 
+
     .hero h1 span {
-    font-size: 0.88em;
+        font-size: 0.88em;
     }
+
 
     .hero__description {
         font-size: 0.92rem;
