@@ -10,6 +10,10 @@
 
     --red: #d71920;
     --green: #00b83f;
+
+    --light-background: #f3f4f6;
+    --dark-text: #171b20;
+    --medium-text: #555b61;
 }
 
 
@@ -30,9 +34,9 @@ html {
 body {
     font-family: "Inter", sans-serif;
 
-    color: var(--white);
+    color: var(--dark-text);
 
-    background-color: var(--black);
+    background-color: var(--light-background);
 
     overflow-x: hidden;
 }
@@ -47,7 +51,7 @@ body {
     left: 0;
 
     width: 100%;
-    height: 180px;
+    height: 190px;
 
     display: flex;
     align-items: center;
@@ -67,39 +71,120 @@ body {
 }
 
 
+/* LOGO / PANEL */
+
 .header__logo {
     display: flex;
     align-items: center;
 
     position: relative;
+
+    padding:
+        12px 35px
+        18px 18px;
+
+    text-decoration: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.018),
+            rgba(0, 0, 0, 0.008) 55%,
+            rgba(0, 0, 0, 0) 100%
+        );
 }
 
+
+/* SOMBRA SUAVE DETRÁS DEL LOGO */
 
 .header__logo::before {
     content: "";
 
     position: absolute;
 
-    width: 480px;
-    height: 150px;
+    width: 460px;
+    height: 110px;
 
-    left: 10px;
+    left: 0;
     top: 50%;
 
     transform: translateY(-50%);
 
-    background: radial-gradient(
-        ellipse,
-        rgba(255, 255, 255, 0.10) 0%,
-        rgba(255, 255, 255, 0.04) 45%,
-        rgba(255, 255, 255, 0) 75%
-    );
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0, 0, 0, 0.05) 0%,
+            rgba(0, 0, 0, 0.015) 50%,
+            rgba(0, 0, 0, 0) 75%
+        );
 
-    filter: blur(15px);
+    filter: blur(18px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* LÍNEA HORIZONTAL INFERIOR */
+
+.header__logo::after {
+    content: "";
+
+    position: absolute;
+
+    left: 18px;
+    bottom: 5px;
+
+    width: 520px;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--red) 0%,
+            var(--red) 45%,
+            rgba(215, 25, 32, 0.45) 75%,
+            rgba(215, 25, 32, 0) 100%
+        );
+
+    box-shadow:
+        0 0 5px rgba(215, 25, 32, 0.20);
+
+    z-index: 1;
 
     pointer-events: none;
 }
 
+
+/* LÍNEA VERTICAL */
+
+.logo-accent {
+    position: absolute;
+
+    left: 5px;
+    bottom: 5px;
+
+    width: 2px;
+    height: 45px;
+
+    background:
+        linear-gradient(
+            0deg,
+            var(--red),
+            rgba(215, 25, 32, 0)
+        );
+
+    box-shadow:
+        0 0 5px rgba(215, 25, 32, 0.25);
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* IMAGEN DEL LOGO */
 
 .header__logo img {
     width: 500px;
@@ -114,8 +199,7 @@ body {
     z-index: 2;
 
     filter:
-        drop-shadow(0 0 2px rgba(255, 255, 255, 0.25))
-        drop-shadow(0 8px 10px rgba(0, 0, 0, 0.5));
+        drop-shadow(0 6px 8px rgba(0, 0, 0, 0.16));
 }
 
 
@@ -130,7 +214,7 @@ body {
 
     overflow: hidden;
 
-    background-color: var(--black);
+    background-color: var(--light-background);
 }
 
 
@@ -147,13 +231,15 @@ body {
 
     padding: 235px 8% 80px 3%;
 
-    background-color: var(--black);
+    background-color: var(--light-background);
 
     position: relative;
 
     z-index: 2;
 }
 
+
+/* ETIQUETA SUPERIOR */
 
 .hero__label {
     margin-bottom: 22px;
@@ -168,6 +254,8 @@ body {
 }
 
 
+/* TÍTULO */
+
 .hero h1 {
     max-width: 760px;
 
@@ -181,7 +269,7 @@ body {
 
     text-transform: uppercase;
 
-    color: var(--white);
+    color: var(--dark-text);
 }
 
 
@@ -192,12 +280,14 @@ body {
 }
 
 
+/* DESCRIPCIÓN */
+
 .hero__description {
     max-width: 620px;
 
     margin-bottom: 30px;
 
-    color: #c5c8cc;
+    color: var(--medium-text);
 
     font-size: 1.08rem;
 
@@ -216,7 +306,7 @@ body {
 
     margin-bottom: 35px;
 
-    color: #d8dadd;
+    color: #353a40;
 
     font-size: 0.9rem;
 
@@ -274,7 +364,7 @@ body {
 }
 
 
-/* WHATSAPP / BOTÓN PRINCIPAL */
+/* WHATSAPP */
 
 .btn--primary {
     background-color: var(--red);
@@ -297,23 +387,23 @@ body {
 }
 
 
-/* EMAIL / BOTÓN SECUNDARIO */
+/* EMAIL */
 
 .btn--secondary {
     background-color: transparent;
 
-    color: var(--white);
+    color: var(--dark-text);
 
-    border: 2px solid rgba(255, 255, 255, 0.35);
+    border: 2px solid rgba(23, 27, 32, 0.45);
 }
 
 
 .btn--secondary:hover {
-    background-color: var(--white);
+    background-color: var(--dark-text);
 
-    color: var(--black);
+    color: var(--white);
 
-    border-color: var(--white);
+    border-color: var(--dark-text);
 
     transform: translateY(-2px);
 }
@@ -328,14 +418,22 @@ body {
 
     overflow: hidden;
 
-    clip-path: polygon(
-        15% 0,
-        100% 0,
-        100% 100%,
-        0 100%
-    );
+    clip-path:
+        polygon(
+            15% 0,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    filter:
+        drop-shadow(
+            -10px 0 18px rgba(0, 0, 0, 0.10)
+        );
 }
 
+
+/* LÍNEA ROJA ENTRE SECCIONES */
 
 .hero__image::before {
     content: "";
@@ -345,18 +443,27 @@ body {
     top: 0;
     left: 4%;
 
-    width: 8px;
+    width: 6px;
     height: 110%;
 
-    background-color: var(--red);
+    background:
+        linear-gradient(
+            180deg,
+            var(--red),
+            #b5141a
+        );
 
     transform: rotate(7deg);
 
     transform-origin: top;
 
     z-index: 3;
+
+    opacity: 0.95;
 }
 
+
+/* DEGRADADO SOBRE LA IMAGEN */
 
 .hero__image::after {
     content: "";
@@ -368,7 +475,7 @@ body {
     background:
         linear-gradient(
             90deg,
-            rgba(16, 20, 25, 0.20),
+            rgba(16, 20, 25, 0.16),
             rgba(16, 20, 25, 0)
         );
 
@@ -386,7 +493,7 @@ body {
 }
 
 
-/* TABLET / CELULAR */
+/* TABLET */
 
 @media (max-width: 900px) {
 
@@ -404,6 +511,13 @@ body {
     }
 
 
+    .header__logo {
+        padding:
+            8px 25px
+            15px 14px;
+    }
+
+
     .header__logo img {
         width: 330px;
 
@@ -413,11 +527,25 @@ body {
 
     .header__logo::before {
         width: 330px;
-        height: 110px;
+        height: 90px;
 
         left: 0;
 
         filter: blur(12px);
+    }
+
+
+    .header__logo::after {
+        left: 14px;
+
+        width: 350px;
+    }
+
+
+    .logo-accent {
+        left: 3px;
+
+        height: 35px;
     }
 
 
@@ -463,11 +591,12 @@ body {
 
         margin-bottom: 28px;
 
-        font-size: clamp(
-            2.8rem,
-            11vw,
-            4.8rem
-        );
+        font-size:
+            clamp(
+                2.8rem,
+                11vw,
+                4.8rem
+            );
 
         line-height: 0.95;
 
@@ -517,12 +646,18 @@ body {
 
         min-height: 350px;
 
-        clip-path: polygon(
-            0 8%,
-            100% 0,
-            100% 100%,
-            0 100%
-        );
+        clip-path:
+            polygon(
+                0 8%,
+                100% 0,
+                100% 100%,
+                0 100%
+            );
+
+        filter:
+            drop-shadow(
+                0 -8px 18px rgba(0, 0, 0, 0.08)
+            );
     }
 
 
@@ -552,6 +687,13 @@ body {
     }
 
 
+    .header__logo {
+        padding:
+            6px 15px
+            13px 12px;
+    }
+
+
     .header__logo img {
         width: 270px;
 
@@ -561,11 +703,29 @@ body {
 
     .header__logo::before {
         width: 270px;
-        height: 95px;
+        height: 80px;
 
         left: 0;
 
         filter: blur(10px);
+    }
+
+
+    .header__logo::after {
+        left: 12px;
+
+        bottom: 3px;
+
+        width: 260px;
+    }
+
+
+    .logo-accent {
+        left: 2px;
+
+        bottom: 3px;
+
+        height: 30px;
     }
 
 
@@ -592,11 +752,12 @@ body {
 
         margin-bottom: 25px;
 
-        font-size: clamp(
-            2rem,
-            9.5vw,
-            2.8rem
-        );
+        font-size:
+            clamp(
+                2rem,
+                9.5vw,
+                2.8rem
+            );
 
         line-height: 1;
 
@@ -656,12 +817,13 @@ body {
 
         min-height: 300px;
 
-        clip-path: polygon(
-            0 6%,
-            100% 0,
-            100% 100%,
-            0 100%
-        );
+        clip-path:
+            polygon(
+                0 6%,
+                100% 0,
+                100% 100%,
+                0 100%
+            );
     }
 
 }
@@ -678,6 +840,11 @@ body {
 
     .header__logo::before {
         width: 250px;
+    }
+
+
+    .header__logo::after {
+        width: 235px;
     }
 
 
