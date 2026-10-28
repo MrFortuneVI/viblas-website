@@ -33,6 +33,8 @@ body {
     color: var(--white);
 
     background-color: var(--black);
+
+    overflow-x: hidden;
 }
 
 
@@ -348,47 +350,120 @@ body {
 @media (max-width: 900px) {
 
     .header {
-        height: 130px;
+        height: auto;
+        padding-top: 25px;
     }
-
 
     .header__container {
         width: 90%;
+        margin: 0 auto;
     }
 
-
     .header__logo img {
-        width: 320px;
+        width: 330px;
+        max-width: 85vw;
     }
 
     .header__logo::before {
-    width: 320px;
-    height: 110px;
+        width: 330px;
+        height: 110px;
+        left: 0;
 
-    left: 0;
-
-    filter: blur(12px);
+        filter: blur(12px);
     }
 
+
     .hero {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+
+        min-height: 100vh;
+
+        overflow-x: hidden;
     }
 
 
     .hero__content {
-        min-height: 68vh;
+        width: 100%;
+
+        min-height: auto;
 
         padding:
-            170px 8%
+            170px 7%
             60px;
+
+        justify-content: flex-start;
+    }
+
+
+    .hero__label {
+        margin-bottom: 18px;
+
+        font-size: 0.7rem;
+
+        line-height: 1.5;
+
+        letter-spacing: 2px;
+    }
+
+
+    .hero h1 {
+        width: 100%;
+        max-width: 100%;
+
+        margin-bottom: 28px;
+
+        font-size: clamp(
+            2.8rem,
+            11vw,
+            4.8rem
+        );
+
+        line-height: 0.95;
+
+        overflow-wrap: break-word;
+    }
+
+
+    .hero h1 span {
+        display: block;
+    }
+
+
+    .hero__description {
+        max-width: 100%;
+
+        margin-bottom: 26px;
+
+        font-size: 1rem;
+
+        line-height: 1.7;
+    }
+
+
+    .hero__status {
+        margin-bottom: 30px;
+    }
+
+
+    .btn {
+        width: auto;
+
+        padding: 14px 28px;
+
+        text-align: center;
     }
 
 
     .hero__image {
+        width: 100%;
+
         height: 45vh;
 
+        min-height: 350px;
+
         clip-path: polygon(
-            0 10%,
+            0 8%,
             100% 0,
             100% 100%,
             0 100%
@@ -401,82 +476,143 @@ body {
     }
 
 
-    .hero h1 {
-        font-size: clamp(
-            2.8rem,
-            12vw,
-            5rem
-        );
+    .hero__image img {
+        object-position: center;
     }
 
 }
 
 
-/* CELULARES PEQUEÑOS */
+/* CELULARES */
 
 @media (max-width: 500px) {
 
     .header {
-        height: 105px;
+        padding-top: 18px;
+    }
+
+
+    .header__container {
+        width: 92%;
     }
 
 
     .header__logo img {
-        width: 250px;
+        width: 290px;
+        max-width: 88vw;
     }
+
 
     .header__logo::before {
-    width: 250px;
-    height: 90px;
+        width: 290px;
+        height: 95px;
 
-    left: 0;
+        left: 0;
 
-    filter: blur(10px);
+        filter: blur(10px);
     }
+
 
     .hero__content {
         padding:
-            140px 7%
-            50px;
+            150px 6%
+            45px;
     }
 
 
     .hero__label {
-        font-size: 0.68rem;
+        margin-bottom: 16px;
 
-        letter-spacing: 2px;
+        font-size: 0.62rem;
 
-        line-height: 1.5;
+        letter-spacing: 1.8px;
     }
 
 
     .hero h1 {
+        margin-bottom: 25px;
+
         font-size: clamp(
-            2.5rem,
-            13vw,
-            4rem
+            2.4rem,
+            11vw,
+            3.6rem
         );
 
-        line-height: 1;
+        line-height: 0.95;
+
+        letter-spacing: -1px;
     }
 
 
     .hero__description {
-        font-size: 1rem;
+        margin-bottom: 24px;
 
-        line-height: 1.7;
+        font-size: 0.96rem;
+
+        line-height: 1.65;
+    }
+
+
+    .hero__status {
+        margin-bottom: 28px;
+
+        font-size: 0.8rem;
+    }
+
+
+    .status-dot {
+        width: 8px;
+        height: 8px;
     }
 
 
     .btn {
         width: 100%;
 
-        text-align: center;
+        padding: 14px 20px;
+
+        font-size: 0.95rem;
     }
 
 
     .hero__image {
         height: 40vh;
+
+        min-height: 300px;
+
+        clip-path: polygon(
+            0 6%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+    }
+
+}
+
+
+/* CELULARES MUY PEQUEÑOS */
+
+@media (max-width: 380px) {
+
+    .header__logo img {
+        width: 260px;
+    }
+
+
+    .hero__content {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+
+    .hero h1 {
+        font-size: 2.35rem;
+    }
+
+
+    .hero__description {
+        font-size: 0.92rem;
     }
 
 }
