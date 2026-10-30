@@ -1,35 +1,92 @@
 ---
 import '../styles/global.css';
+
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
 ---
 
 <html lang="es">
+
   <head>
+
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+
+    <meta
+      name="description"
+      content="VIBLAS - Soluciones especializadas en vibración, sonido y diagnóstico industrial."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <title>VIBLAS</title>
+
   </head>
+
 
   <body>
 
-    <header class="header">
-      <div class="logo-placeholder"></div>
-
-      <button class="menu" aria-label="Abrir menú">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </header>
+    <Header />
 
     <main>
-      <section class="section section-one"></section>
 
-      <section class="section section-two"></section>
+      <Hero />
 
-      <section class="section section-three"></section>
+
+      <!-- SECCIÓN 2 -->
+      <div class="diagonal diagonal--right"></div>
+
+      <section class="split-section">
+
+        <div class="split-section__visual">
+
+          <div class="image-placeholder image-placeholder--large">
+            IMAGEN
+          </div>
+
+        </div>
+
+
+        <div class="split-section__content">
+
+          <p class="eyebrow">
+            LOREM IPSUM
+          </p>
+
+          <h2>
+            Lorem ipsum<br />
+            dolor sit amet.
+          </h2>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+
+          <a href="#" class="text-link">
+            VER MÁS →
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- El resto de las secciones
+           se queda como ya lo teníamos -->
+
     </main>
 
-    <footer class="footer"></footer>
-
   </body>
+
 </html>
