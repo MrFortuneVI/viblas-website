@@ -3,6 +3,10 @@ import '../styles/global.css';
 
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import SplitSection from '../components/SplitSection.astro';
+import CardsSection from '../components/CardsSection.astro';
+import FinalSection from '../components/FinalSection.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <html lang="es">
@@ -13,7 +17,7 @@ import Hero from '../components/Hero.astro';
 
     <meta
       name="viewport"
-      content="width=device-width"
+      content="width=device-width, initial-scale=1.0"
     />
 
     <meta
@@ -21,15 +25,27 @@ import Hero from '../components/Hero.astro';
       content="VIBLAS - Soluciones especializadas en vibración, sonido y diagnóstico industrial."
     />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
 
-    <title>VIBLAS</title>
+
+    <title>
+      VIBLAS
+    </title>
 
   </head>
 
@@ -38,54 +54,54 @@ import Hero from '../components/Hero.astro';
 
     <Header />
 
-    <main>
 
-      <Hero />
+<main>
 
-
-      <!-- SECCIÓN 2 -->
-      <div class="diagonal diagonal--right"></div>
-
-      <section class="split-section">
-
-        <div class="split-section__visual">
-
-          <div class="image-placeholder image-placeholder--large">
-            IMAGEN
-          </div>
-
-        </div>
+  <!-- HERO -->
+  <Hero />
 
 
-        <div class="split-section__content">
-
-          <p class="eyebrow">
-            LOREM IPSUM
-          </p>
-
-          <h2>
-            Lorem ipsum<br />
-            dolor sit amet.
-          </h2>
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-
-          <a href="#" class="text-link">
-            VER MÁS →
-          </a>
-
-        </div>
-
-      </section>
+  <!-- DIVISIÓN -->
+  <div class="diagonal diagonal--right"></div>
 
 
-      <!-- El resto de las secciones
-           se queda como ya lo teníamos -->
+  <!-- SECCIÓN 2 -->
+  <SplitSection
+    number="02"
+    eyebrow="LOREM IPSUM"
+    title1="Lorem ipsum"
+    title2="dolor sit amet."
+    buttonText="VER MÁS"
+    image="/images/hero-placeholder.jpg"
+  />
 
-    </main>
+
+  <!-- TARJETAS -->
+  <CardsSection />
+
+
+  <!-- DIVISIÓN -->
+  <div class="diagonal diagonal--left"></div>
+
+
+  <!-- SECCIÓN 4 -->
+  <SplitSection
+    reverse={true}
+    number="04"
+    eyebrow="LOREM IPSUM"
+    title1="Lorem ipsum"
+    title2="dolor sit amet."
+    buttonText="DESCUBRIR"
+    image="/images/hero-placeholder.jpg"
+  />
+
+
+  <!-- CTA -->
+  <FinalSection />
+
+</main>
+
+    <Footer />
 
   </body>
 

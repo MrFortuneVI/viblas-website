@@ -1,0 +1,63 @@
+---
+interface Props {
+  reverse?: boolean;
+  number?: string;
+  eyebrow?: string;
+  title1?: string;
+  title2?: string;
+  buttonText?: string;
+  image?: string;
+}
+
+const {
+  reverse = false,
+  number = '02',
+  eyebrow = 'LOREM IPSUM',
+  title1 = 'Lorem ipsum',
+  title2 = 'dolor sit amet.',
+  buttonText = 'VER MÁS',
+  image = '/images/hero-placeholder.jpg'
+} = Astro.props;
+---
+
+<section class:list={['split-section', { 'split-section--reverse': reverse }]}>
+
+  <div class="split-section__visual">
+
+    <img
+      src={image}
+      alt=""
+      class="split-section__image"
+    />
+
+    <span class="split-section__number">
+      {number}
+    </span>
+
+  </div>
+
+
+  <div class="split-section__content">
+
+    <p class="eyebrow">
+      {eyebrow}
+    </p>
+
+    <h2>
+      {title1}<br />
+      {title2}
+    </h2>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam.
+    </p>
+
+    <a href="#" class="text-link">
+      {buttonText} →
+    </a>
+
+  </div>
+
+</section>

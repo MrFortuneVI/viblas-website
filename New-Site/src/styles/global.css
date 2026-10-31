@@ -49,7 +49,7 @@ button {
 
 .header {
   width: 100%;
-  height: 130px;
+  height: 115px;
 
   display: flex;
   align-items: center;
@@ -57,17 +57,26 @@ button {
 
   padding: 0 6%;
 
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.82);
 
-  border-bottom: 2px solid var(--black);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
-  position: relative;
+  position: sticky;
+  top: 0;
 
-  z-index: 10;
+  z-index: 1000;
+
+  transition:
+    height 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 
-/* LOGO */
+/* =========================
+   LOGO
+========================= */
 
 .header__brand {
   display: flex;
@@ -75,92 +84,107 @@ button {
 }
 
 .header__logo {
-  display: block;
-
-  width: 230px;
+  width: 275px;
   height: auto;
 
+  display: block;
+
   object-fit: contain;
+
+  transition:
+    width 0.3s ease,
+    transform 0.3s ease;
 }
 
 
-/* MENÚ */
+/* HEADER AL HACER SCROLL */
+
+.header.header--scrolled {
+  height: 90px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  box-shadow:
+    0 1px 0 rgba(20, 26, 32, 0.08);
+}
+
+.header.header--scrolled .header__logo {
+  width: 225px;
+}
+
+
+/* =========================
+   MENÚ
+========================= */
 
 .menu {
   width: 64px;
   height: 64px;
 
-  padding: 0;
-
   border: none;
-
   background: transparent;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 
   gap: 8px;
 
+  padding: 0;
+
   cursor: pointer;
+
+  transition: transform 0.3s ease;
 }
 
 .menu span {
   display: block;
 
-  width: 39px;
-  height: 3px;
+  height: 2px;
 
   background: var(--black);
 
   transition:
-    transform 0.3s ease,
-    width 0.3s ease;
+    width 0.25s ease,
+    transform 0.25s ease;
 }
 
+.menu span:nth-child(1) {
+  width: 38px;
+}
 
-/* pequeño detalle visual */
+.menu span:nth-child(2) {
+  width: 28px;
+}
 
-@media (hover: hover) {
-
-  .menu:hover span:nth-child(1) {
-    width: 30px;
-  }
-
-  .menu:hover span:nth-child(3) {
-    width: 30px;
-  }
-
+.menu span:nth-child(3) {
+  width: 38px;
 }
 
 
 /* =========================
-   MENÚ HAMBURGUESA
+   HOVER DEL MENÚ
 ========================= */
 
-.menu {
-  width: 65px;
-  height: 65px;
+@media (hover: hover) {
 
-  border: none;
-  background: transparent;
+  .menu:hover {
+    transform: translateY(-2px);
+  }
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  .menu:hover span:nth-child(1) {
+    width: 28px;
+  }
 
-  gap: 8px;
+  .menu:hover span:nth-child(2) {
+    width: 38px;
+  }
 
-  cursor: pointer;
-}
+  .menu:hover span:nth-child(3) {
+    width: 32px;
+  }
 
-.menu span {
-  width: 38px;
-  height: 3px;
-
-  background: var(--black);
 }
 
 
@@ -223,13 +247,13 @@ p {
   gap: 7%;
 
   padding:
-    110px
+    70px
     6%
     120px;
 }
 
 
-/* TEXTO */
+/* TEXTO HERO */
 
 .hero__content {
   max-width: 720px;
@@ -250,7 +274,7 @@ p {
 }
 
 
-/* IMAGEN */
+/* IMAGEN HERO */
 
 .hero__visual {
   width: 100%;
@@ -286,12 +310,11 @@ p {
   top: 57%;
 
   width: 125%;
-  height: 3px;
+  height: 2px;
 
   background: var(--red);
 
   transform: rotate(-9deg);
-
   transform-origin: center;
 
   pointer-events: none;
@@ -319,11 +342,29 @@ p {
   font-weight: 700;
 
   letter-spacing: 0.1em;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
 }
 
 .button span {
   color: var(--red);
   font-size: 1.2rem;
+
+  transition: transform 0.25s ease;
+}
+
+@media (hover: hover) {
+
+  .button:hover {
+    transform: translateY(-2px);
+  }
+
+  .button:hover span {
+    transform: translateX(4px);
+  }
+
 }
 
 
@@ -409,43 +450,171 @@ p {
 ========================= */
 
 .split-section {
-  min-height: 820px;
+  min-height: 850px;
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  grid-template-columns:
+    minmax(0, 1.1fr)
+    minmax(0, 0.9fr);
 
   align-items: center;
 
   gap: 8%;
 
-  padding: 110px 6%;
+  padding:
+    120px
+    6%;
+
+  position: relative;
+
+  background: var(--white);
 }
+
+
+/* =========================
+   IMAGEN SPLIT
+========================= */
+
+.split-section__visual {
+  width: 100%;
+  height: 650px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background: var(--light-gray);
+}
+
+.split-section__image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  filter:
+    grayscale(25%)
+    contrast(1.05);
+
+  transition:
+    transform 0.6s ease,
+    filter 0.6s ease;
+}
+
+
+/* NÚMERO */
+
+.split-section__number {
+  position: absolute;
+
+  top: 30px;
+  left: 30px;
+
+  padding: 10px 14px;
+
+  background: var(--black);
+  color: var(--white);
+
+  font-family: "Montserrat", Arial, sans-serif;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+
+  z-index: 2;
+}
+
+
+/* =========================
+   TEXTO SPLIT
+========================= */
 
 .split-section__content {
   max-width: 600px;
 }
 
-.split-section__content p:not(.eyebrow) {
-  margin-top: 30px;
+.split-section__content h2 {
+  max-width: 560px;
+}
 
+.split-section__content p:not(.eyebrow) {
   max-width: 500px;
 
+  margin-top: 32px;
+
   color: var(--gray);
+
+  font-size: 1rem;
 }
+
+
+/* =========================
+   ENLACE DE TEXTO
+========================= */
 
 .text-link {
   display: inline-block;
 
-  margin-top: 40px;
+  margin-top: 42px;
 
-  font-size: 0.85rem;
+  padding-bottom: 7px;
+
+  border-bottom: 2px solid var(--red);
+
+  font-size: 0.8rem;
   font-weight: 700;
 
   letter-spacing: 0.12em;
 
-  border-bottom: 2px solid var(--red);
+  transition:
+    color 0.25s ease,
+    padding-left 0.25s ease;
+}
 
-  padding-bottom: 6px;
+
+/* =========================
+   HOVER SPLIT
+========================= */
+
+@media (hover: hover) {
+
+  .split-section__visual:hover .split-section__image {
+    transform: scale(1.025);
+
+    filter:
+      grayscale(5%)
+      contrast(1.05);
+  }
+
+  .text-link:hover {
+    color: var(--red);
+
+    padding-left: 8px;
+  }
+
+}
+
+
+/* =========================
+   SECCIÓN INVERTIDA
+========================= */
+
+.split-section--reverse {
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+}
+
+.split-section--reverse .split-section__visual {
+  order: 2;
+}
+
+.split-section--reverse .split-section__content {
+  order: 1;
 }
 
 
@@ -454,7 +623,9 @@ p {
 ========================= */
 
 .cards-section {
-  padding: 140px 6%;
+  padding:
+    140px
+    6%;
 
   background: var(--black);
   color: var(--white);
@@ -469,7 +640,8 @@ p {
 .cards-grid {
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
 
   gap: 30px;
 }
@@ -521,7 +693,9 @@ p {
 .final-section {
   min-height: 600px;
 
-  padding: 120px 6%;
+  padding:
+    120px
+    6%;
 
   display: flex;
   flex-direction: column;
@@ -557,7 +731,9 @@ p {
 .footer {
   min-height: 200px;
 
-  padding: 50px 6%;
+  padding:
+    50px
+    6%;
 
   background: var(--black);
   color: var(--white);
@@ -570,14 +746,15 @@ p {
 }
 
 .footer__logo {
-  width: 170px;
-  height: 60px;
-
-  border: 1px solid var(--white);
-
   display: flex;
   align-items: center;
-  justify-content: center;
+}
+
+.footer__logo img {
+  width: 150px;
+  height: auto;
+
+  display: block;
 }
 
 .footer__links {
@@ -599,11 +776,13 @@ p {
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ==================================================
+   TABLET
+================================================== */
 
 @media (max-width: 900px) {
+
+  /* HEADER */
 
   .header {
     height: 100px;
@@ -612,34 +791,55 @@ p {
   }
 
   .header__logo {
-    width: 170px;
-    height: 55px;
+    width: 210px;
   }
 
+  .header.header--scrolled {
+    height: 82px;
+  }
+
+  .header.header--scrolled .header__logo {
+    width: 185px;
+  }
+
+
+  /* HERO */
 
   .hero {
     grid-template-columns: 1fr;
 
     min-height: auto;
 
-    padding: 80px 5%;
+    padding:
+      80px
+      5%
+      90px;
 
     gap: 70px;
   }
 
-  .image-placeholder {
-    height: 450px;
+  .hero__visual {
+    height: 520px;
   }
 
 
-  .split-section {
+  /* SPLIT SECTION */
+
+  .split-section,
+  .split-section--reverse {
     grid-template-columns: 1fr;
 
     min-height: auto;
 
-    padding: 90px 5%;
+    padding:
+      90px
+      5%;
 
     gap: 70px;
+  }
+
+  .split-section__visual {
+    height: 520px;
   }
 
   .split-section--reverse .split-section__content {
@@ -651,8 +851,12 @@ p {
   }
 
 
+  /* TARJETAS */
+
   .cards-section {
-    padding: 100px 5%;
+    padding:
+      100px
+      5%;
   }
 
   .cards-grid {
@@ -664,12 +868,18 @@ p {
   }
 
 
+  /* CTA */
+
   .final-section {
     min-height: 500px;
 
-    padding: 90px 5%;
+    padding:
+      90px
+      5%;
   }
 
+
+  /* FOOTER */
 
   .footer {
     flex-direction: column;
@@ -680,7 +890,46 @@ p {
 }
 
 
+/* ==================================================
+   MOBILE
+================================================== */
+
 @media (max-width: 600px) {
+
+  /* HEADER */
+
+  .header {
+    height: 90px;
+  }
+
+  .header__logo {
+    width: 170px;
+  }
+
+  .header.header--scrolled {
+    height: 75px;
+  }
+
+  .header.header--scrolled .header__logo {
+    width: 150px;
+  }
+
+  .menu {
+    width: 50px;
+    height: 50px;
+  }
+
+  .menu span:nth-child(1),
+  .menu span:nth-child(3) {
+    width: 31px;
+  }
+
+  .menu span:nth-child(2) {
+    width: 24px;
+  }
+
+
+  /* TEXTOS */
 
   h1 {
     font-size: 3rem;
@@ -691,11 +940,46 @@ p {
   }
 
 
+  /* HERO */
+
   .hero {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding:
+      60px
+      5%
+      70px;
+
+    gap: 50px;
   }
 
+  .hero__visual {
+    height: 420px;
+  }
+
+
+  /* SPLIT */
+
+  .split-section,
+  .split-section--reverse {
+    padding:
+      70px
+      5%;
+
+    gap: 50px;
+  }
+
+  .split-section__visual {
+    height: 400px;
+  }
+
+  .split-section__number {
+    top: 20px;
+    left: 20px;
+
+    padding: 8px 11px;
+  }
+
+
+  /* PLACEHOLDERS */
 
   .image-placeholder {
     height: 350px;
@@ -706,9 +990,12 @@ p {
   }
 
 
+  /* TARJETAS */
+
   .cards-section {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding:
+      80px
+      5%;
   }
 
   .card__image {
@@ -716,10 +1003,14 @@ p {
   }
 
 
+  /* DIAGONALES */
+
   .diagonal {
     height: 55px;
   }
 
+
+  /* FOOTER */
 
   .footer__links {
     flex-direction: column;

@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" id="site-header">
 
   <a href="/" class="header__brand">
     <img
@@ -8,10 +8,34 @@
     />
   </a>
 
+
   <button class="menu" aria-label="Abrir menú">
+
     <span></span>
     <span></span>
     <span></span>
+
   </button>
 
 </header>
+
+
+<script>
+  const header = document.querySelector('#site-header');
+
+  const updateHeader = () => {
+
+    if (!header) return;
+
+    if (window.scrollY > 50) {
+      header.classList.add('header--scrolled');
+    } else {
+      header.classList.remove('header--scrolled');
+    }
+
+  };
+
+  window.addEventListener('scroll', updateHeader);
+
+  updateHeader();
+</script>
